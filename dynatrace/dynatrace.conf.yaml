@@ -1,0 +1,14 @@
+---
+spec_version: '0.1.0'
+dtCreds: dynatrace-api-token-rms
+attachRules:
+  tagRule:
+  - meTypes:
+    - SERVICE
+    tags:
+    - context: Kubernetes
+      key: app
+      value: $SERVICE
+    - context: CONTEXTLESS
+      key: env
+      value: $STAGE
