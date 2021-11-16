@@ -1,4 +1,4 @@
----
+--
 spec_version: '0.1.0'
 dtCreds: dynatrace-api-token-rms
 attachRules:
@@ -6,6 +6,9 @@ attachRules:
   - meTypes:
     - SERVICE
     tags:
+    - context: Kubernetes
+      key: app
+      value: $SERVICE
     - context: CONTEXTLESS
-      key: KeptnQualityGate
-      value: TraderUILoadTesting
+      key: env
+      value: $STAGE
