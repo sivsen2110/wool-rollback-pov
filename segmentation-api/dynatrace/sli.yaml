@@ -6,4 +6,5 @@ indicators:
   response_time_p50: "metricSelector=builtin:service.response.time:merge(dt.entity.service):percentile(50)&entitySelector=type(SERVICE),tag([Kubernetes]app:$SERVICE),tag([CONTEXTLESS]env:$STAGE)"
   response_time_p90: "metricSelector=builtin:service.response.time:merge(dt.entity.service):percentile(90)&entitySelector=type(SERVICE),tag([Kubernetes]app:$SERVICE),tag([CONTEXTLESS]env:$STAGE)"
   response_time_p95: "metricSelector=builtin:service.response.time:merge(dt.entity.service):percentile(95)&entitySelector=type(SERVICE),tag([Kubernetes]app:$SERVICE),tag([CONTEXTLESS]env:$STAGE)"
+   response_bootstrap_90P: "metricSelector=builtin:service.keyRequest.response.server:filter(and(in("dt.entity.service_method",entitySelector("type(service_method),entityName(~"/api/ui/v2/bootstrap~")")))):splitBy():percentile(90):auto:sort(value(percentile(90),descending)):limit(10)"
   
