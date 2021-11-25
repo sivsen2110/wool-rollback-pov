@@ -125,6 +125,10 @@ STAGE = os.getenv('DATA_STAGE','')
 INCOMING_START_TIME = os.getenv('DATA_EVALUATION_START','')
 INCOMING_END_TIME = os.getenv('DATA_EVALUATION_END','')
 TIMEFRAME = os.getenv('DATA_EVALUATION_TIMEFRAME','')
+#Adding exit to check what time is coming through
+print(INCOMING_START_TIME)
+print(INCOMING_END_TIME)
+exit()
 # If start or end time is an empty string, we must have been given a timeframe
 # Then we can get the end time from the TIME environment variable and calculate the start time as TIME-timeframe
 # If we don't have start, end OR timeframe, we cannot proceeed. Exit
