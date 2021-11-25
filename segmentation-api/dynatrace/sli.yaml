@@ -1,9 +1,16 @@
 ---
-spec_version: '1.0'
+spec_version: '2.0'
 indicators:
   throughput: "metricSelector=builtin:service.requestCount.total:merge(dt.entity.service):sum&entitySelector=type(SERVICE),tag([Kubernetes]app:$SERVICE),tag([CONTEXTLESS]env:$STAGE)"
   error_rate: "metricSelector=builtin:service.errors.total.rate:merge(dt.entity.service):avg&entitySelector=type(SERVICE),tag([Kubernetes]app:$SERVICE),tag([CONTEXTLESS]env:$STAGE)"
   response_time_p50: "metricSelector=builtin:service.response.time:merge(dt.entity.service):percentile(50)&entitySelector=type(SERVICE),tag([Kubernetes]app:$SERVICE),tag([CONTEXTLESS]env:$STAGE)"
   response_time_p90: "metricSelector=builtin:service.response.time:merge(dt.entity.service):percentile(90)&entitySelector=type(SERVICE),tag([Kubernetes]app:$SERVICE),tag([CONTEXTLESS]env:$STAGE)"
   response_time_p95: "metricSelector=builtin:service.response.time:merge(dt.entity.service):percentile(95)&entitySelector=type(SERVICE),tag([Kubernetes]app:$SERVICE),tag([CONTEXTLESS]env:$STAGE)"
-  
+  sv_response_time_single_p90: "metricSelector=builtin:service.keyRequest.response.time:filter(and(in("dt.entity.service_method",entitySelector("type(service_method),entityName(~"PT-/api/v1/Rules/SingleRequestID~")")))):splitBy():percentile(90):auto:sort(value(percentile(90),descending)):limit(10)"
+  sv_response_time_multiple_p90: "metricSelector=builtin:service.keyRequest.response.time:filter(and(in("dt.entity.service_method",entitySelector("type(service_method),entityName(~"PT-/api/v1/Rules/ids~")")))):splitBy():percentile(90):auto:sort(value(percentile(90),descending)):limit(10)"
+  sv_response_time_single_p50: "metricSelector=builtin:service.keyRequest.response.time:filter(and(in("dt.entity.service_method",entitySelector("type(service_method),entityName(~"PT-/api/v1/Rules/SingleRequestID~")")))):splitBy():percentile(50):auto:sort(value(percentile(90),descending)):limit(10)"
+  sv_response_time_multiple_p50: "metricSelector=builtin:service.keyRequest.response.time:filter(and(in("dt.entity.service_method",entitySelector("type(service_method),entityName(~"PT-/api/v1/Rules/ids~")")))):splitBy():percentile(50):auto:sort(value(percentile(90),descending)):limit(10)"
+  sv_cpu_container_p90: "metricSelector=builtin:containers.cpu.usagePercent:filter(and(eq(Container,segmentation-api))):splitBy():percentile(90):auto:sort(value(percentile(90),descending)):limit(10)"
+  sv_cpu_container_avg: "metricSelector=builtin:containers.cpu.usagePercent:filter(and(eq(Container,segmentation-api))):splitBy():avg:auto:sort(value(avg,descending)):limit(10)"
+  sv_memory_container_p90: "metricSelector=builtin:containers.memory.usagePercent:filter(and(eq(Container,segmentation-api))):splitBy():percentile(90):auto:sort(value(percentile(90),descending)):limit(10)"
+  sv_memory_container_avg: "metricSelector=builtin:containers.memory.usagePercent:filter(and(eq(Container,segmentation-api))):splitBy():avg:auto:sort(value(avg,descending)):limit(10)"
