@@ -6,7 +6,7 @@ attachRules:
   - meTypes:
     - SERVICE
     tags:
-    - context: Kubernetes
+    - context: KUBERNETES
       key: app
       value: $SERVICE
     - context: CONTEXTLESS
