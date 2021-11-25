@@ -29,6 +29,78 @@ objectives:
     warning:
       - criteria:
           - "<=600"
+  - sli: sv_response_time_single_p90
+  pass:
+  - criteria:
+    - <+10%
+  warning:
+  - criteria:
+    - <+15%
+  weight: 1
+  key_sli: false
+  - sli: sv_response_time_multiple_p90
+  pass:
+  - criteria:
+    - <+10%
+  warning:
+  - criteria:
+    - <+15%
+  weight: 1
+  key_sli: false
+  - sli: sv_response_time_single_p50
+  pass:
+  - criteria:
+    - <+10%
+  warning:
+  - criteria:
+    - <+15%
+  weight: 1
+  key_sli: false
+  - sli: sv_response_time_multiple_p50
+  pass:
+  - criteria:
+    - <+10%
+  warning:
+  - criteria:
+    - <+15%
+  weight: 1
+  key_sli: false
+   - sli: sv_cpu_container_p90
+  pass:
+  - criteria:
+    - <+10%
+  warning:
+  - criteria:
+    - <+15%
+  weight: 1
+  key_sli: false
+  - sli: sv_cpu_container_avg
+  pass:
+  - criteria:
+    - <+10%
+  warning:
+  - criteria:
+    - <+15%
+  weight: 1
+  key_sli: false
+  - sli: sv_memory_container_p90
+  pass:
+  - criteria:
+    - <+10%
+  warning:
+  - criteria:
+    - <+15%
+  weight: 1
+  key_sli: false
+  - sli: sv_memory_container_avg
+  pass:
+  - criteria:
+    - <+10%
+  warning:
+  - criteria:
+    - <+15%
+  weight: 1
+  key_sli: false
 total_score:
-  pass: "90%"
-  warning: "75%"
+  pass: "95%"
+  warning: "90%"
